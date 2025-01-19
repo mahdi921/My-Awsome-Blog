@@ -11,5 +11,8 @@ def about_view(request):
 def contact_view(request):
     return render(request, 'blog/contact.html')
 
-# def blog_single_view(request, pid):
-#     return render(request, 'blog/single.html')
+def blog_single_view(request, pid):
+    return render(request, 'blog/single-post.html')
+
+def blog_view(request):
+    return render(request, 'blog/blog-home.html')
