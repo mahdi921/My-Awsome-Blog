@@ -4,3 +4,12 @@ from django.shortcuts import render
 
 def index_view(request):
     return render(request, 'blog/index.html')
+
+def about_view(request):
+    return render(request, 'blog/about.html')
+
+def contact_view(request):
+    return render(request, 'blog/contact.html')
+
+# def blog_single_view(request, pid):
+#     return render(request, 'blog/single.html')
