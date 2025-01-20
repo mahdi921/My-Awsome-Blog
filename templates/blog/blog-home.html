@@ -57,7 +57,7 @@
 
                     <div class="post-img position-relative overflow-hidden">
                       <img src="{% static 'blog/assets/img/blog/blog-1.jpg' %}" class="img-fluid" alt="">
-                      <span class="post-date">{{ post.created_date|date:'D d M Y''</span>
+                      <span class="post-date">{{ post.created_date|date:'d M Y' }}</span>
                     </div>
 
                     <div class="post-content d-flex flex-column">
@@ -80,7 +80,7 @@
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="{% url 'blog:single' pid=post.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
