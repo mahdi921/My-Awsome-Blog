@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 
 
 # Create your views here.
@@ -9,6 +10,11 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 def blog_view(request):
     posts = Post.objects.filter(published_date__lte=timezone.now(),
                                 status=1)
+    #search query handled here
+    query = request.GET.get('s')
+    if query:
+        posts = posts.filter(Q(content__contains=query) | Q(title__contains=query))
+    #pagination handled here
     posts = Paginator(posts, 6)
     try:
         page_number = request.GET.get('page')
@@ -34,3 +40,15 @@ def blog_single_view(request, pid):
         'previous' : previous_post
     }
     return render(request, 'blog/single-post.html', context)
+
+# def search_view(request):
+#     posts = Post.objects.filter(published_date__lte=timezone.now(),
+#                                 status=1)
+#     query = request.GET.get('s')
+#     if query:
+#
+#         posts = posts.filter(Q(content__contains=query)|Q(title__contains=query))
+#     context = {
+#         'posts' : posts
+#     }
+#     return render(request, 'blog/blog-home.html', context)
