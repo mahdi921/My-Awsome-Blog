@@ -31,11 +31,11 @@
     <!-- Page Title -->
     <div class="page-title">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Single Post</h1>
+        <h1 class="mb-2 mb-lg-0">Post Details</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="{% url 'blog:index' %}">Home</a></li>
-            <li class="current">Single Post</li>
+            <li><a href="{% url 'blog:blog' %}">Blog Home</a></li>
+            <li class="current">{{post.title}}</li>
           </ol>
         </nav>
       </div>
@@ -56,54 +56,53 @@
                   <img src="{% static 'blog/assets/img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
                 </div>
 
-                <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
+                <h2 class="title">{{post.title}}</h2>
 
                 <div class="meta-top">
                   <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href=#">John Doe</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href=#"><time datetime="2020-01-01">{{post.created_date|date:'M d, Y'}}</time></a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href=#">12 Comments</a></li>
                   </ul>
                 </div><!-- End meta top -->
 
                 <div class="content">
                   <p>
-                    Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                    Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                    {{post.content}}
                   </p>
-
+                  <!--
                   <p>
                     Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
                   </p>
+                  -->
 
-                  <blockquote>
-                    <p>
-                      Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
-                    </p>
-                  </blockquote>
+<!--                  <blockquote>-->
+<!--                    <p>-->
+<!--                      This is test text palceholder for future improvements-->
+<!--                    </p>-->
+<!--                  </blockquote>-->
 
-                  <p>
-                    Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                    Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                    Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
-                  </p>
+<!--                  <p>-->
+<!--                    Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.-->
+<!--                    Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.-->
+<!--                    Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.-->
+<!--                  </p>-->
 
-                  <h3>Et quae iure vel ut odit alias.</h3>
-                  <p>
-                    Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                    Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                    Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
-                  </p>
+<!--                  <h3>Placeholder For A Mid-Text Title</h3>-->
+<!--                  <p>-->
+<!--                    Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.-->
+<!--                    Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.-->
+<!--                    Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.-->
+<!--                  </p>-->
                   <img src="{% static 'blog/assets/img/blog/blog-inside-post.jpg' %}" class="img-fluid" alt="">
 
-                  <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
-                  <p>
-                    Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                    Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
-                  </p>
-                  <p>
-                    Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
-                  </p>
+<!--                  <h3>Another Placeholder For A Mid-Text Title</h3>-->
+<!--                  <p>-->
+<!--                    {{post.content|-->
+<!--                  </p>-->
+<!--                  <p>-->
+<!--                    Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.-->
+<!--                  </p>-->
 
                 </div><!-- End post content -->
 
@@ -125,7 +124,45 @@
 
             </div>
           </section><!-- /Blog Details Section -->
-
+          <div class="navigation-area">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                      {% if previous != None %}
+                      <div class="thumb">
+                          <a href="{% url 'blog:single' pid=previous.id %}">
+                            <img class="img-fluid" src="{% static 'blog/assets/img/blog/blog-1.jpg' %}" alt="">
+                          </a>
+                      </div>
+                      <div class="detials">
+                          <p>Prev Post</p>
+                          <a href="{% url 'blog:single' pid=previous.id %}"><h4>{{previous.title}}</h4></a>
+                      </div>
+                    {% else %}
+                      <div class="detials">
+                          <p>Prev Post</p>
+                          <a><h4>No Previous Post!</h4></a>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                    {% if next != None %}
+                      <div class="detials">
+                          <p>Next Post</p>
+                          <a href="{% url 'blog:single' pid=next.id %}"><h4>{{next.title}}</h4></a>
+                      </div>
+                      <div class="thumb">
+                          <a href="{% url 'blog:single' pid=next.id %}"><img class="img-fluid" src="{% static 'blog/assets/img/blog/blog-2.jpg' %}" alt=""></a>
+                      </div>
+                    {% else %}
+                      <div class="detials">
+                          <p>Next Post</p>
+                          <a><h4>No Next Post</h4></a>
+                      </div>
+                    {% endif %}
+                  </div>
+              </div>
+          </div>
+          <br>
           <!-- Blog Comments Section -->
           <section id="blog-comments" class="blog-comments section">
 
@@ -312,7 +349,7 @@
               <div class="post-item">
                 <img src="{% static 'blog/assets/img/blog/blog-recent-1.jpg' %}" alt="" class="flex-shrink-0">
                 <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
+                  <h4><a href=#">Nihil blanditiis at in nihil autem</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
               </div><!-- End recent post item-->
@@ -320,7 +357,7 @@
               <div class="post-item">
                 <img src="{% static 'blog/assets/img/blog/blog-recent-2.jpg' %}" alt="" class="flex-shrink-0">
                 <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
+                  <h4><a href=#">Quidem autem et impedit</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
               </div><!-- End recent post item-->
@@ -328,7 +365,7 @@
               <div class="post-item">
                 <img src="{% static 'blog/assets/img/blog/blog-recent-3.jpg' %}" alt="" class="flex-shrink-0">
                 <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <h4><a href=#">Id quia et et ut maxime similique occaecati ut</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
               </div><!-- End recent post item-->
@@ -336,7 +373,7 @@
               <div class="post-item">
                 <img src="{% static 'blog/assets/img/blog/blog-recent-4.jpg' %}" alt="" class="flex-shrink-0">
                 <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
+                  <h4><a href=#">Laborum corporis quo dara net para</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
               </div><!-- End recent post item-->
@@ -344,7 +381,7 @@
               <div class="post-item">
                 <img src="{% static 'blog/assets/img/blog/blog-recent-5.jpg' %}" alt="" class="flex-shrink-0">
                 <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <h4><a href=#">Et dolores corrupti quae illo quod dolor</a></h4>
                   <time datetime="2020-01-01">Jan 1, 2020</time>
                 </div>
               </div><!-- End recent post item-->

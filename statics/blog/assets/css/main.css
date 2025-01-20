@@ -2090,3 +2090,115 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin: 10px 0 0 0;
 }
+
+/** post pagination **/
+
+/* Nav Menu Arrows */
+.sf-arrows .sf-with-ul {
+  padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+  content: "\f107";
+  position: absolute;
+  right: 15px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: "\f105";
+}
+
+.text-white {
+  color: #fff;
+}
+ .arrow {
+  position: absolute;
+}
+
+ .arrow .lnr {
+  font-size: 20px;
+  font-weight: 600;
+}
+ .navigation-area {
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+ .navigation-area .nav-left {
+  text-align: left;
+}
+
+ .navigation-area .nav-left .thumb {
+  margin-right: 20px;
+  background: #000;
+}
+
+ .navigation-area .nav-left .thumb img {
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  max-width: 150px;
+  max-height: 90px;
+}
+
+ .navigation-area .nav-left .lnr {
+  margin-left: 20px;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+ .navigation-area .nav-left:hover .lnr {
+  opacity: 1;
+}
+
+ .navigation-area .nav-left:hover .thumb img {
+  opacity: .5;
+}
+
+@media (max-width: 767px) {
+   .navigation-area .nav-left {
+    margin-bottom: 30px;
+  }
+}
+
+ .navigation-area .nav-right {
+  text-align: right;
+}
+
+ .navigation-area .nav-right .thumb {
+  margin-left: 20px;
+  background: #000;
+}
+
+ .navigation-area .nav-right .thumb img {
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  max-width: 150px;
+  max-height: 90px;
+}
+
+ .navigation-area .nav-right .lnr {
+  margin-right: 20px;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+ .navigation-area .nav-right:hover .lnr {
+  opacity: 1;
+}
+
+ .navigation-area .nav-right:hover .thumb img {
+  opacity: .5;
+}
