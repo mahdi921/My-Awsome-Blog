@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load blog_tags %} {% block content %}
 
 <title>Blog Home</title>
 </head>
@@ -56,7 +56,7 @@
                   <article class="position-relative h-100">
 
                     <div class="post-img position-relative overflow-hidden">
-                      <img src="{% static 'blog/assets/img/blog/blog-1.jpg' %}" class="img-fluid" alt="">
+                      <img src="{{post.image.url}}" class="img-fluid" alt="">
                       <span class="post-date">{{ post.created_date|date:'d M Y' }}</span>
                     </div>
 
@@ -72,6 +72,10 @@
                         <div class="d-flex align-items-center">
                           <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
                         </div>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-eye"></i> <span class="ps-2">{{post.counted_views}}</span>
+                        </div>
                       </div>
 
                       <p>
@@ -86,43 +90,44 @@
 
                   </article>
                 </div><!-- End post list item -->
-              {% endfor %}
-                {% comment %}
+
+                {% empty %}
                 <div class="col-lg-6">
                   <article class="position-relative h-100">
 
                     <div class="post-img position-relative overflow-hidden">
                       <img src="{% static 'blog/assets/img/blog/blog-2.jpg' %}" class="img-fluid" alt="">
-                      <span class="post-date">March 19</span>
+                      <span class="post-date">Today</span>
                     </div>
 
                     <div class="post-content d-flex flex-column">
 
-                      <h3 class="post-title">Nisi magni odit consequatur autem nulla dolorem</h3>
+                      <h3 class="post-title">No Posts to Show</h3>
 
                       <div class="meta d-flex align-items-center">
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                          <i class="bi bi-person"></i> <span class="ps-2"></span>
                         </div>
                         <span class="px-3 text-black-50">/</span>
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
+                          <i class="bi bi-folder2"></i> <span class="ps-2"></span>
                         </div>
                       </div>
 
                       <p>
-                        Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
+                        Your query has no results.
                       </p>
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="#" class="readmore stretched-link"><span>No Post Here!</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
                   </article>
                 </div><!-- End post list item -->
-
+              {% endfor %}
+              {% comment %}
                 <div class="col-lg-6">
                   <article class="position-relative h-100">
 
@@ -303,103 +308,20 @@
 
           <div class="widgets-container">
 
-            <!-- Blog Author Widget 2 -->
-            <div class="blog-author-widget-2 widget-item">
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="{% static 'blog/assets/img/blog/blog-author.jpg' %}" class="rounded-circle flex-shrink-0" alt="">
-                <h4>Jane Smith</h4>
-                <div class="social-links">
-                  <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
-                </div>
-
-                <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                </p>
-
-              </div>
-            </div><!--/Blog Author Widget 2 -->
+            <!-- Blog Author Widget -->
+            {% include 'blog/blog-author-widget.html' %}<!--/Blog Author Widget -->
 
             <!-- Search Widget -->
-            <div class="search-widget widget-item">
-
-              <h3 class="widget-title">Search</h3>
-              <form action="">
-                <input type="text">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-              </form>
-
-            </div><!--/Search Widget -->
+            {% include 'blog/blog-search-widget.html' %}<!--/Search Widget -->
 
             <!-- Recent Posts Widget -->
-            <div class="recent-posts-widget widget-item">
+            {% popular_widget %} <!--/Recent Posts Widget -->
 
-              <h3 class="widget-title">Recent Posts</h3>
-
-              <div class="post-item">
-                <img src="{% static 'blog/assets/img/blog/blog-recent-1.jpg' %}" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="{% static 'blog/assets/img/blog/blog-recent-2.jpg' %}" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="{% static 'blog/assets/img/blog/blog-recent-3.jpg' %}" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="{% static 'blog/assets/img/blog/blog-recent-4.jpg' %}" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="{% static 'blog/assets/img/blog/blog-recent-5.jpg' %}" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-            </div><!--/Recent Posts Widget -->
+            <!-- Categorries Widget -->
+            {% include 'blog/blog-categories-widget.html' %}<!--/Categories Widget -->
 
             <!-- Tags Widget -->
-            <div class="tags-widget widget-item">
-
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
-
-            </div><!--/Tags Widget -->
+            {% include 'blog/blog-tags-widget.html' %}<!--/Tags Widget -->
 
           </div>
 
