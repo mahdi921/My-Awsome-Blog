@@ -1,5 +1,5 @@
 from django.db import models
-
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Post(models.Model):
@@ -7,6 +7,7 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='blog/', default='blog/assets/img/blog/default.jpg')
     counted_views = models.IntegerField(default=0)
+    tag = TaggableManager()
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
