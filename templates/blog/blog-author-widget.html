@@ -4,7 +4,7 @@
 
               <div class="d-flex flex-column align-items-center">
                 <img src="{% static 'blog/assets/img/blog/blog-author.jpg' %}" class="rounded-circle flex-shrink-0" alt="">
-                <h4>{{author.get_full_name}}</h4>
+                  <a href="{% url 'blog:author' author_name=author.username %}"><h4>{{author.get_full_name}}</h4></a>
                 <div class="social-links">
                   <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
                   <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>

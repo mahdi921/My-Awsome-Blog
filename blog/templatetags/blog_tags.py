@@ -3,6 +3,7 @@ from blog.models import Post
 from django.db.models import Count
 from django.utils import timezone
 from django.contrib.auth.models import User
+from taggit.models import Tag
 
 register = template.Library()
 
@@ -16,3 +17,8 @@ def blog_author():
 def popular_widget(qty=5):
     posts = Post.objects.filter(published_date__lte=timezone.now(), status=1).order_by('-counted_views')[:qty]
     return {'posts' : posts}
+
+@register.inclusion_tag('blog/blog-tags-widget.html')
+def all_blog_tags():
+    tags = Tag.objects.all()
+    return {'tags' : tags}

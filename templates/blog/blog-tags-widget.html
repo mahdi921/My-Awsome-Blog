@@ -4,7 +4,7 @@
 
               <h3 class="widget-title">Tags</h3>
               <ul>
-                  {% for tag in post.tag.all %}
+                  {% for tag in tags %}
                      <li>
                          <a href="{% url 'blog:tag' tag_name=tag.name %}">
                              {{tag.name}}
@@ -20,6 +20,8 @@
 <!--                <li><a href="#">Smart</a></li>-->
 <!--                <li><a href="#">Tips</a></li>-->
 <!--                <li><a href="#">Marketing</a></li>-->
+                  {% empty %}
+                  <p>No tags found.</p>
                   {% endfor %}
               </ul>
 

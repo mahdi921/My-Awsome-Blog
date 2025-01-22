@@ -60,10 +60,18 @@
 
                 <div class="meta-top">
                   <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">John Doe</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#">{{post.created_date|date:'M d, Y'}}</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">12 Comments</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-eye"></i> <a>{{post.counted_views}}</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i>
+                      <a href="{% url 'blog:author' author_name=post.author.username %}">{{post.author.get_full_name}}</a>
+                    </li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                      <a href="#">{{post.created_date|date:'M d, Y'}}</a>
+                    </li>
+                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>
+                      <a href="#">12 Comments</a>
+                    </li>
+                    <li class="d-flex align-items-center"><i class="bi bi-eye"></i>
+                      <a>{{post.counted_views}}</a>
+                    </li>
                   </ul>
                 </div><!-- End meta top -->
 
@@ -321,7 +329,7 @@
             {% include 'blog/blog-categories-widget.html' %}<!--/Categories Widget -->
 
             <!-- Tags Widget -->
-            {% include 'blog/blog-tags-widget.html' %}<!--/Tags Widget -->
+            {% all_blog_tags %} <!--/Tags Widget -->
 
           </div>
 
