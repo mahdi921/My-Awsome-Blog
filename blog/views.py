@@ -7,7 +7,7 @@ from django.db.models import Q
 
 # Create your views here.
 
-def blog_view(request, tag_name=None):
+def blog_view(request, tag_name=None, author_name=None):
     posts = Post.objects.filter(published_date__lte=timezone.now(),
                                 status=1)
     #search query handled here
@@ -17,6 +17,9 @@ def blog_view(request, tag_name=None):
     #tag filtering handled here
     if tag_name:
         posts = posts.filter(tag__name=tag_name)
+    #author filtering handled here
+    if author_name:
+        posts = posts.filter(author__username=author_name)
     #pagination handled here
     posts = Paginator(posts, 6)
     try:
