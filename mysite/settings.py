@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', default='test')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default=[]).split(",")
 
 
 # Application definition
@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'taggit',
     'blog.apps.BlogConfig',
     'website.apps.WebsiteConfig',
-    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
-    ]
+]
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'media'
 
