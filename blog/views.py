@@ -7,13 +7,16 @@ from django.db.models import Q
 
 # Create your views here.
 
-def blog_view(request):
+def blog_view(request, tag_name=None):
     posts = Post.objects.filter(published_date__lte=timezone.now(),
                                 status=1)
     #search query handled here
     query = request.GET.get('s')
     if query:
         posts = posts.filter(Q(content__contains=query) | Q(title__contains=query))
+    #tag filtering handled here
+    if tag_name:
+        posts = posts.filter(tag__name=tag_name)
     #pagination handled here
     posts = Paginator(posts, 6)
     try:
