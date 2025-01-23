@@ -1,7 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+
 # Create your models here.
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['name']
+    def __str__(self):
+        return f'{self.name}'
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -9,6 +18,7 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='blog/', default='blog/assets/img/blog/default.jpg')
     counted_views = models.IntegerField(default=0)
+    category = models.ManyToManyField(Category)
     tag = TaggableManager()
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
