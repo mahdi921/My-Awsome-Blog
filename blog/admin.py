@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post
+from blog.models import Post, Category
 
 # Register your models here.
 
@@ -13,3 +13,5 @@ class PostAdmin(admin.ModelAdmin):
     actions = ['make_published']
     empty_value_display = '-empty-'
     date_hierarchy = 'created_date'
+
+admin.site.register(Category)

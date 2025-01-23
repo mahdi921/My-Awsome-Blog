@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post
+from blog.models import Post, Category
 from django.db.models import Count
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -22,3 +22,12 @@ def popular_widget(qty=5):
 def all_blog_tags():
     tags = Tag.objects.all()
     return {'tags' : tags}
+
+@register.inclusion_tag('blog/blog-categories-widget.html')
+def category_widget():
+    posts = Post.objects.filter(published_date__lte=timezone.now(), status=1)
+    category = Category.objects.all()
+    category_dict = {}
+    for name in category:
+        category_dict[name] = posts.filter(category=name).count()
+    return {'categories': category_dict}

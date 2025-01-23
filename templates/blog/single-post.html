@@ -118,14 +118,26 @@
                 <div class="meta-bottom">
                   <i class="bi bi-folder"></i>
                   <ul class="cats">
-                    <li><a href="#">Business</a></li>
+                    {% for category in post.category.all %}
+                    <li>
+                      <a href="{% url 'blog:category' category_name=category %}">
+                        {{category}}
+                      </a>
+                    </li>
+                    {% endfor %}
                   </ul>
 
                   <i class="bi bi-tags"></i>
                   <ul class="tags">
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">Tips</a></li>
-                    <li><a href="#">Marketing</a></li>
+                    {% for tag in post.tag.all %}
+                    <li>
+                      <a href="{% url 'blog:tag' tag_name=tag %}">
+                        {{tag}}
+                      </a>
+                    </li>
+                    {% endfor %}
+<!--                    <li><a href="#">Tips</a></li>-->
+<!--                    <li><a href="#">Marketing</a></li>-->
                   </ul>
                 </div><!-- End meta bottom -->
 
@@ -326,7 +338,7 @@
             {% popular_widget %} <!--/Recent Posts Widget -->
 
             <!-- Categorries Widget -->
-            {% include 'blog/blog-categories-widget.html' %}<!--/Categories Widget -->
+            {% category_widget %}<!--/Categories Widget -->
 
             <!-- Tags Widget -->
             {% all_blog_tags %} <!--/Tags Widget -->

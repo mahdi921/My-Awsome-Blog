@@ -79,9 +79,17 @@
                             </a>
                           </span>
                         </div>
-                        <span class="px-3 text-black-50">/</span>
+                        <span class="px-3 text-black-50"> / </span>
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                          <i class="bi bi-folder2"></i>
+                          <span class="ps-2">
+                              {% for category in post.category.all %}
+                            <a href="{% url 'blog:category' category_name=category %}">
+                              {{category}}
+                            </a>
+                              {% if not forloop.last %}, {% endif %}
+                              {% endfor %}
+                          </span>
                         </div>
                         <span class="px-3 text-black-50">/</span>
                         <div class="d-flex align-items-center">
@@ -131,7 +139,7 @@
 
                       <hr>
 
-                      <a href="#" class="readmore stretched-link"><span>No Post Here!</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="{% url 'blog:blog' %}" class="readmore stretched-link"><span>To Blog Home</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
@@ -329,7 +337,7 @@
             {% popular_widget %} <!--/Recent Posts Widget -->
 
             <!-- Categorries Widget -->
-            {% include 'blog/blog-categories-widget.html' %}<!--/Categories Widget -->
+            {% category_widget %}<!--/Categories Widget -->
 
             <!-- Tags Widget -->
             {% all_blog_tags %}<!--/Tags Widget -->
