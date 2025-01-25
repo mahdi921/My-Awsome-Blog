@@ -106,10 +106,11 @@
         <div class="bbb-wrapper fl-wrap">
           <div class="subcribe-form fl-wrap">
             <p class="text-center"><b>Sign up now to our newsletter</b></p>
-            <form id="subscribe" novalidate="true">
-                <input class="enteremail" name="EMAIL" id="subscribe-email" placeholder="Email" spellcheck="false" type="text">
+            <form id="subscribe" action="{% url 'website:newsletter' %}" method="post">
+              {% csrf_token %}
+                <input class="enteremail" name="email"  placeholder="Email" spellcheck="false" type="email">
                 <button type="submit" id="subscribe-button" class="subscribe-button color-bg"><i class="fa fa-rss"></i> Subscribe</button>
-                <label for="subscribe-email" class="subscribe-message"></label>
+
             </form>
           </div>
         </div>
