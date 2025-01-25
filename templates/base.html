@@ -103,6 +103,16 @@
             <li><a href="#">Flexo</a></li>
           </ul>
         </div>
+        <div class="bbb-wrapper fl-wrap">
+          <div class="subcribe-form fl-wrap">
+            <p class="text-center"><b>Sign up now to our newsletter</b></p>
+            <form id="subscribe" novalidate="true">
+                <input class="enteremail" name="EMAIL" id="subscribe-email" placeholder="Email" spellcheck="false" type="text">
+                <button type="submit" id="subscribe-button" class="subscribe-button color-bg"><i class="fa fa-rss"></i> Subscribe</button>
+                <label for="subscribe-email" class="subscribe-message"></label>
+            </form>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -134,6 +144,15 @@
 
   <!-- Main JS File -->
   <script src="{% static 'blog/assets/js/main.js' %}"></script>
+
+  <!-- Alert Messages -->
+  {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+             {% if message.tags %} <script>alert('{{ message }}')</script>{% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
 
 </body>
 

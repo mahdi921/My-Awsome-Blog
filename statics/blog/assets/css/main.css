@@ -2202,3 +2202,73 @@ section,
  .navigation-area .nav-right:hover .thumb img {
   opacity: .5;
 }
+
+/**/
+/**body{
+	background-color: #181e2d;
+}
+**/
+.bbb-wrapper{
+
+	    margin-top: 20px;
+
+
+}
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.bbb-wrapper .subcribe-form p {
+    color: #fff;
+    font-size: 14px;
+}
+
+.bbb-wrapper .subcribe-form form {
+    max-width: 350px;
+    margin: 15px auto;
+    position: relative;
+}
+
+.bbb-wrapper .subcribe-form #subscribe input {
+    width: 100%;
+    height: 48px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 1px;
+    padding: 0 30px;
+    box-shadow: 0px 0px 0px 7px rgba(255,255,255,0.1);
+}
+
+.bbb-wrapper .subcribe-form #subscribe #subscribe-button {
+    height: 38px;
+    padding: 0 30px;
+    border-radius: 3px;
+    border: none;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+        font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.subscribe-message {
+    color: #fff;
+    float: left;
+    margin-top: 10px;
+    text-align: left;
+    font-weight: 500;
+    line-height: 19px;
+}
+
+.color-bg{
+	    background: #000;
+}
+
+#subscribe-button:hover{
+    background: #2C3B5A;
+    color: #fff;
+}
