@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
-
+from blog.forms import CommentForm
 
 # Create your views here.
 
@@ -43,10 +43,27 @@ def blog_single_view(request, pid):
     other_posts = Post.objects.filter(published_date__lte=timezone.now(), status=1).exclude(id=pid)
     next_post = other_posts.filter(id__gt=pid).order_by('id').first()
     previous_post = other_posts.filter(id__lt=pid).order_by('-id').first()
+    comments = Comment.objects.filter(post=post, approved=True).order_by('-created_date')
+    if request.method == 'POST':
+        from django.contrib import messages
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_instance = form.save(commit=False)
+            if new_instance.subject == '':
+                new_instance.subject = '-empty-'
+            new_instance.post = post
+            new_instance.save()
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Your comment has been submitted and is awaiting approval')
+        elif form.errors:
+            messages.add_message(request, messages.ERROR, 'Your comment didnt go through, check your input')
+    form = CommentForm()
     context = {
         'post' : post,
         'next' : next_post,
-        'previous' : previous_post
+        'previous' : previous_post,
+        "comments" : comments,
+        'form' : form,
     }
     return render(request, 'blog/single-post.html', context)
 
