@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
 
 # Register your models here.
 
@@ -15,3 +15,12 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
 
 admin.site.register(Category)
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'post', 'approved', 'created_date', 'updated_date')
+    list_filter = ('approved', 'created_date',)
+    search_fields = ('name','email', 'message')
+    actions = ['approve_comments']
+    empty_value_display = '-empty-'
+    date_hierarchy = 'updated_date'
