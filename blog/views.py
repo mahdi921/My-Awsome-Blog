@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from blog.forms import CommentForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -45,7 +46,6 @@ def blog_single_view(request, pid):
     previous_post = other_posts.filter(id__lt=pid).order_by('-id').first()
     comments = Comment.objects.filter(post=post, approved=True).order_by('-created_date')
     if request.method == 'POST':
-        from django.contrib import messages
         form = CommentForm(request.POST)
         if form.is_valid():
             new_instance = form.save(commit=False)

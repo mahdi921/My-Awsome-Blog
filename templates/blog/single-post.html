@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% load blog_tags %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load blog_tags %} {% load humanize %} {% block content %}
 <title>{% comment %}{{post.title}}{% endcomment %}
   Post Details
 </title>
@@ -191,22 +191,24 @@
 
             <div class="container">
 
-              <h4 class="comments-count">8 Comments</h4>
-
+              <h4 class="comments-count">{{ comments|length }} Comments</h4>
+{% for comment in comments %}
               <div id="comment-1" class="comment">
                 <div class="d-flex">
                   <div class="comment-img"><img src="{% static 'blog/assets/img/blog/comments-1.jpg' %}" alt=""></div>
                   <div>
-                    <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan,2022</time>
+                    <h5><a>{{comment.name}}</a></h5>
+                    <time datetime="2020-01-01">{{comment.created_date|naturaltime}}</time>
                     <p>
-                      Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                      Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
+                      {{comment.message}}
                     </p>
                   </div>
                 </div>
               </div><!-- End comment #1 -->
-
+{% empty %}
+              <h5>No Comments Yet! Be The First To Comment!</h5>
+{% endfor %}
+{% comment %}
               <div id="comment-2" class="comment">
                 <div class="d-flex">
                   <div class="comment-img"><img src="{% static 'blog/assets/img/blog/comments-2.jpg' %}" alt=""></div>
@@ -281,7 +283,7 @@
                 </div>
 
               </div><!-- End comment #4 -->
-
+{% endcomment %}
             </div>
 
           </section><!-- /Blog Comments Section -->
@@ -290,26 +292,27 @@
           <section id="comment-form" class="comment-form section">
             <div class="container">
 
-              <form action="">
-
-                <h4>Post Comment</h4>
+              <form action="{% url 'blog:single' pid=post.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="post" value="{{post.id}}">
+                <h4>Write a Comment</h4>
                 <p>Your email address will not be published. Required fields are marked * </p>
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <input name="name" type="text" class="form-control" placeholder="Your Name*">
                   </div>
                   <div class="col-md-6 form-group">
-                    <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                    <input name="email" type="email" class="form-control" placeholder="Your Email*">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col form-group">
-                    <input name="website" type="text" class="form-control" placeholder="Your Website">
+                    <input name="subject" type="text" class="form-control" placeholder="Subject">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col form-group">
-                    <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                    <textarea name="message" class="form-control" placeholder="Your Comment*"></textarea>
                   </div>
                 </div>
 
