@@ -798,6 +798,8 @@ section,
 
 .trending-category .post-entry img {
   margin-bottom: 30px;
+  max-height: 120px;
+  width:210px;
 }
 
 .trending-category .post-entry h2 {

@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from website.forms import NewsletterForm, ContactForm
 from django.contrib import messages
+from blog.models import Post
+from django.utils import timezone
 
 # Create your views here.
 
 def index_view(request):
-    return render(request, 'website/index.html')
+    post = Post.objects.filter(status=1, published_date__lte=timezone.now()).order_by('-counted_views')[0]
+    return render(request, 'website/index.html',{'post':post})
 
 def about_view(request):
     return render(request, 'website/about.html')
