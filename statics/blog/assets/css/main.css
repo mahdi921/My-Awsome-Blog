@@ -2253,6 +2253,7 @@ section,
         font-size: 13px;
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.4s ease;
 }
 
 .subscribe-message {
@@ -2271,4 +2272,20 @@ section,
 #subscribe-button:hover{
     background: #2C3B5A;
     color: #fff;
+}
+
+/* Button styling */
+.styled-button {
+    background-color: #000; /* Green background */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.4s ease; /* Smooth transition */
+}
+
+.styled-button:hover {
+    background-color: #2C3B5A; /* Darker green on hover */
 }
