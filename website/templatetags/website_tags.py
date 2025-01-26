@@ -16,7 +16,7 @@ def index_trending(arg=5):
 
 @register.inclusion_tag('website/index-post-category.html')
 def index_category(arg):
-    posts = Post.objects.filter(status=1, published_date__lte=timezone.now())
+    posts = Post.objects.filter(status=1, published_date__lte=timezone.now()).order_by('-id')
     category = Category.objects.all()
     post_list = []
     for name in category:
