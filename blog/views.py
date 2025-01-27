@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import Post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 
@@ -65,16 +66,7 @@ def blog_single_view(request, pid):
         "comments" : comments,
         'form' : form,
     }
+    if post.login_required and not request.user.is_authenticated:
+        messages.add_message(request, messages.ERROR, 'You need to be logged in to view this post')
+        return redirect(reverse('accounts:login'))
     return render(request, 'blog/single-post.html', context)
-
-# def search_view(request):
-#     posts = Post.objects.filter(published_date__lte=timezone.now(),
-#                                 status=1)
-#     query = request.GET.get('s')
-#     if query:
-#
-#         posts = posts.filter(Q(content__contains=query)|Q(title__contains=query))
-#     context = {
-#         'posts' : posts
-#     }
-#     return render(request, 'blog/blog-home.html', context)

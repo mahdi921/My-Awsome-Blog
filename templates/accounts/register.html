@@ -39,17 +39,20 @@
     <!-- Starter Section Section -->
     <section class="starter-section section text-center">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <form class="form-signin">
-          <h1 class="h3 mb-3 font-weight-normal">Signup</h1>
+        <form class="form-signin" action="{% url 'accounts:register' %}" method="post">
+          {% csrf_token %}
+          <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 
           <input type="text" id="username" name="username" class="form-control" placeholder="User Name" required autofocus>
-
+          <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name" required>
+          <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name" required>
           <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
-
           <input type="password" id="password1" name="password1" class="form-control" placeholder="Password" required>
-
           <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password" required>
-          <button class="styled-button" type="submit">Sign in</button>
+          <p>
+            Already a user? <a href="{% url 'accounts:login' %}">Login</a>
+          </p>
+          <button class="styled-button" type="submit">Sign up</button>
         </form>
 
       </div>

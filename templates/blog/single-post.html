@@ -291,12 +291,21 @@
                 <h4>Write a Comment</h4>
                 <p>Your email address will not be published. Required fields are marked * </p>
                 <div class="row">
+                  {% if not request.user.is_authenticated %}
                   <div class="col-md-6 form-group">
                     <input name="name" type="text" class="form-control" placeholder="Your Name*">
                   </div>
                   <div class="col-md-6 form-group">
                     <input name="email" type="email" class="form-control" placeholder="Your Email*">
                   </div>
+                  {% else %}
+                  <div class="col-md-6 form-group">
+                    <input name="name" type="text" class="form-control" value="{{request.user.username}}" >
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <input name="email" type="email" class="form-control" value="{{request.user.email}}" >
+                  </div>
+                  {% endif %}
                 </div>
                 <div class="row">
                   <div class="col form-group">
