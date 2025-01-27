@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'taggit',
     'blog.apps.BlogConfig',
     'website.apps.WebsiteConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
