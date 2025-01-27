@@ -1,19 +1,27 @@
 {% load static %}
 <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="{% url 'website:index' %}">Home</a></li>
-          <li><a href="{% url 'blog:blog' %}">Blog</a></li>
-          <li><a href="{% url 'website:about' %}">About</a></li>
-          <li><a href="{% url 'website:contact' %}" class="active">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+    <ul>
+      <li><a href="{% url 'website:index' %}">Home</a></li>
+      <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+      <li><a href="{% url 'website:about' %}">About</a></li>
+      <li><a href="{% url 'website:contact' %}" class="active">Contact</a></li>
+    </ul>
+    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
 
 <div>
-    <a href="#"><i>Login</i></a>
+
+    {% if request.user.is_authenticated %}
+    <i>Logged in as {{request.user.username}}</i>
     <i>/</i>
-    <a href="#"><i>Signup</i></a>
-<!--        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>-->
-<!--        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>-->
-<!--        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>-->
-      </div>
+    <i><a href="#">Logout</a></i>
+    {% elif not request.user.is_authenticated %}
+        <i><a href="{% url 'accounts:login' %}">Login</a></i>
+    <i>/</i>
+        <i><a href="{% url 'accounts:register' %}">Signup</a></i>
+    <!--        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>-->
+    <!--        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>-->
+    <!--        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>-->
+        {% endif %}
+
+  </div>

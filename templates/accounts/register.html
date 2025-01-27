@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+  <title>Signup</title>
+<!-- Custom styles for this template -->
+    <link href="{% static 'accounts/signin.css' %}" rel="stylesheet">
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">ZenBlog</h1>
+      </a>
+
+      {% include 'blog/blog-nav.html' %}
+
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Signup Page</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Signup</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Starter Section Section -->
+    <section class="starter-section section text-center">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <form class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal">Signup</h1>
+
+          <input type="text" id="username" name="username" class="form-control" placeholder="User Name" required autofocus>
+
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+
+          <input type="password" id="password1" name="password1" class="form-control" placeholder="Password" required>
+
+          <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password" required>
+          <button class="styled-button" type="submit">Sign in</button>
+        </form>
+
+      </div>
+    </section><!-- /Starter Section Section -->
+
+  </main>
+{% endblock content %}
