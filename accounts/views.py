@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
-from accounts.forms import RegisterForm
+from accounts.forms import RegisterForm, AuthForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import PasswordResetView
 
@@ -25,8 +22,10 @@ def login_view(request):
                                          'Username or email does not exist, try again')
                     return redirect(reverse('accounts:login'))
             password = request.POST['password']
-            data = {'username': username, 'password': password}
-            form = AuthenticationForm(request=request, data=data)
+            captcha_response_0 = request.POST.get('captcha_0')
+            captcha_response_1 = request.POST.get('captcha_1')
+            data = {'username': username, 'password': password, 'captcha_0': captcha_response_0, 'captcha_1': captcha_response_1}
+            form = AuthForm(request=request, data=data)
             if form.is_valid():
                 username = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password')
@@ -40,7 +39,7 @@ def login_view(request):
                 messages.add_message(request, messages.ERROR,
                                      'invalid credentials, try again')
         else:
-            form = AuthenticationForm()
+            form = AuthForm()
         return render(request, 'accounts/login.html', {'form': form})
     else:
         messages.add_message(request, messages.ERROR,
@@ -56,7 +55,9 @@ def register_view(request):
                 'last_name': request.POST.get('last_name'),
                 'email': request.POST.get('email'),
                 'password1': request.POST.get('password1'),
-                'password2': request.POST.get('password2')
+                'password2': request.POST.get('password2'),
+                'captcha_0' : request.POST.get('captcha_0'),
+                'captcha_1' : request.POST.get('captcha_1'),
             }
             if User.objects.filter(username=data['username']).exists() or User.objects.filter(email=data['email']).exists():
                 messages.add_message(request, messages.ERROR,

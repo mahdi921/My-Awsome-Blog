@@ -28,17 +28,23 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default=[], cast=Csv())
 
+SITE_ID = 2
 
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
     'django.contrib.humanize',
+    'captcha',
     'taggit',
     'blog.apps.BlogConfig',
     'website.apps.WebsiteConfig',
@@ -155,3 +161,18 @@ if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
         (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
     ]
     MANAGERS=ADMINS
+
+#Robots Config
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
+
+# captcha settings
+CAPTCHA_FONT_SIZE = 36
+CAPTCHA_IMAGE_SIZE = (250, 50)
+CAPTCHA_LENGTH = 8
+CAPTCHA_LETTER_ROTATION = (-60, 60)
+
+#multi-captcha settings
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}

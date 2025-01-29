@@ -60,7 +60,7 @@
                       <a href="#">{{post.created_date|date:'M d, Y'}}</a>
                     </li>
                     <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i>
-                      <a href="#">12 Comments</a>
+                      <a href="#">{{post.comments.length}} Comments</a>
                     </li>
                     <li class="d-flex align-items-center"><i class="bi bi-eye"></i>
                       <a>{{post.counted_views}}</a>
@@ -206,6 +206,10 @@
                   <div class="col form-group">
                     <textarea name="message" class="form-control" placeholder="Your Comment*"></textarea>
                   </div>
+                </div>
+                <div class="col-md-12 text-center">
+                  <p>Please solve the captcha:</p>
+                  <p>{{form.captcha}}</p>
                 </div>
 
                 <div class="text-center">
